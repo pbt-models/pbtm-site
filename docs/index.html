@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PBTModels - The Rolling Ball Analogy</title>
+  <meta name="description"
+    content="Explore the Rolling Ball Analogy through engaging animated videos that simplify the understanding of Population-Based Threshold models and their interactions.">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-primary: #2d6a2e;
+      --color-dark: #1a1a1a;
+      --color-light: #f8f8f8;
+      --color-accent: #e07800;
+      --max-width: 1100px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+      color: #333;
+      line-height: 1.7;
+      background: #fff;
+    }
+
+    /* Header */
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo img {
+      height: 50px;
+      width: auto;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--color-dark);
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--color-primary);
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #1a3a1a 0%, #2d6a2e 40%, #e07800 100%);
+      color: #fff;
+      text-align: center;
+      padding: 5rem 1.5rem;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      text-wrap: balance;
+    }
+
+    .hero p {
+      max-width: 800px;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      opacity: 0.95;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .hero-buttons a {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      padding: 0.6rem 1.25rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .hero-buttons a:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: #fff;
+    }
+
+    /* Content sections */
+    .section {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+
+    .section+.section {
+      border-top: 1px solid #eee;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .section h2 {
+      font-size: 1.75rem;
+      color: var(--color-dark);
+      margin-bottom: 1rem;
+    }
+
+    .section p {
+      margin-bottom: 1rem;
+    }
+
+    .section video {
+      width: 100%;
+      border-radius: 8px;
+      background: #000;
+    }
+
+    /* References */
+    .references {
+      background: var(--color-dark);
+      color: #ddd;
+      padding: 4rem 1.5rem;
+    }
+
+    .references-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .references p {
+      margin-bottom: 0.75rem;
+    }
+
+    .references .intro {
+      margin-bottom: 2rem;
+    }
+
+    .ref-card {
+      background: #2a2a2a;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    .site-footer {
+      background: var(--color-primary);
+      color: #fff;
+      padding: 2rem 1.5rem;
+    }
+
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-inner img {
+      height: 40px;
+      width: auto;
+    }
+
+    .footer-inner p {
+      opacity: 0.85;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 3rem 1.5rem;
+        min-height: 60vh;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#" class="logo">
+        <img src="images/pbt-models-logo.jpg" alt="PBTModels">
+      </a>
+      <nav>
+        <a href="#">Home</a>
+        <a href="mailto:contact@pbtmodels.org">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>PBTModels: The rolling ball analogy</h1>
+    <p>Population-based threshold (PBT) models are conceptually simple, but it can be hard to visualize how the
+      different components fit together and influence the predicted behaviors. We have developed different analogous
+      examples that can help users understand how the different components interact. Here, we illustrate the Rolling
+      Ball Analogy in a series of animated videos.</p>
+    <p>The PBT models have only a few basic components:</p>
+    <div class="hero-buttons">
+      <a href="#factors-baselevels">Factors and base levels</a>
+      <a href="#response-rate">Response Rate</a>
+      <a href="#time-constant">Time Constant</a>
+      <a href="#base-thresholds-variation">Base thresholds variation</a>
+    </div>
+  </section>
+
+  <!-- Section: Factors and base levels -->
+  <section class="section" id="factors-baselevels">
+    <div class="section-grid">
+      <div>
+        <h2>Factors and base levels</h2>
+        <p>The responding entities (molecules, cells, seeds, organisms, etc.) have thresholds for sensing factors (X) to
+          which they can respond. For a factor <strong>promoter (+)</strong> of a response, such as a hormone, there
+          will be a minimum threshold concentration that will trigger a response, whether for a cell or for a seed. This
+          threshold sensitivity of factor X is termed the base level for that factor, or <em>X<sub>b</sub></em>. If the
+          factor is an <strong>inhibitor (&ndash;)</strong> of the response, then the factor level that just prevents
+          the response from occurring is termed the base level.</p>
+      </div>
+      <div>
+        <!-- TODO: Replace src with your hosted video URL -->
+        <video controls poster="" src="REPLACE_WITH_VIDEO_URL/RollingBall-FactorsBaseLevels.mp4"></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Response rate -->
+  <section class="section" id="response-rate">
+    <div class="section-grid">
+      <div>
+        <h2>Response rate</h2>
+        <p>The rate at which the response is activated or progresses is proportional to the difference between the
+          factor level (X) and the base threshold sensitivity to it (<em>X<sub>b</sub></em>):</p>
+        <p><strong>(+)</strong> (<em>X &ndash; X<sub>b</sub></em>) or <strong>(&ndash;)</strong> (<em>X<sub>b</sub>
+            &ndash; X</em>).</p>
+      </div>
+      <div>
+        <!-- TODO: Replace src with your hosted video URL -->
+        <video controls src="REPLACE_WITH_VIDEO_URL/RollingBall-ResponseRate.mp4"></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Time constant -->
+  <section class="section" id="time-constant">
+    <div class="section-grid">
+      <div>
+        <h2>Time constant</h2>
+        <p>The product of this difference in factor level in excess or below the base threshold (<em>X &ndash;
+            X<sub>b</sub></em> or <em>X<sub>b</sub> &ndash; X</em>, respectively) and the time to response (<em>t</em>)
+          is a constant, called the time constant (<em>&theta;<sub>X</sub></em>), resulting in the following equation
+          for the model:</p>
+        <p><strong>(+)</strong> <em>&theta;<sub>X</sub></em> = (<em>X &ndash; X<sub>b</sub></em>) <em>t</em> or
+          <strong>(&ndash;)</strong> <em>&theta;<sub>X</sub></em> = (<em>X<sub>b</sub> &ndash; X</em>) <em>t</em>.
+        </p>
+        <p>Thus, as the factor level difference increases, the time to occurrence of the regulated process decreases
+          proportionately to keep <em>&theta;<sub>X</sub></em> constant. Since rates are the inverse of the time
+          required for something to happen, this can also be shown as:</p>
+        <p><strong>(+)</strong> <em>Response rate = 1 / t</em> = (<em>X &ndash; X<sub>b</sub></em>) /
+          <em>&theta;<sub>X</sub></em> or
+        </p>
+        <p><strong>(&ndash;)</strong> <em>Response rate = 1 / t</em> = (<em>X<sub>b</sub> &ndash; X</em>) /
+          <em>&theta;<sub>X</sub></em>.
+        </p>
+      </div>
+      <div>
+        <!-- TODO: Replace src with your hosted video URL -->
+        <video controls src="REPLACE_WITH_VIDEO_URL/RollingBall-TimeConstant.mp4"></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Base thresholds variation -->
+  <section class="section" id="base-thresholds-variation">
+    <div class="section-grid">
+      <div>
+        <h2>Base thresholds variation</h2>
+        <p>The final feature of PBT models is that the values of the base thresholds vary among the individual
+          responding entities. That is, <em>X<sub>b</sub></em> varies among individuals, generally in a normal
+          distribution that can be defined by its mean and standard deviation. This results in the final equation for
+          the PBT model, where <em>X<sub>b</sub>(i)</em> indicates the normal distribution of <em>X<sub>b</sub></em>
+          values across individuals (or fraction) <em>i</em>, and <em>t<sub>i</sub></em> is the time to response of
+          individual <em>i</em>:</p>
+        <p><strong>(+)</strong> <em>Response rate = 1 / t<sub>i</sub> = [ X &ndash; X<sub>b</sub>(i) ] /
+            &theta;<sub>X</sub></em> or</p>
+        <p><strong>(&ndash;)</strong> <em>Response rate = 1 / t<sub>i</sub> = [ X<sub>b</sub>(i) &ndash; X ] /
+            &theta;<sub>X</sub></em>.</p>
+      </div>
+      <div>
+        <!-- TODO: Replace src with your hosted video URL -->
+        <video controls src="REPLACE_WITH_VIDEO_URL/RollingBall-ThresholdVariation-1.mp4"></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section: Base thresholds variation -->
+  <section class="section" id="pbtm-app">
+    <div class="section-grid">
+      <div>
+        <h2>Try the app</h2>
+        <p>Most of the threshold models described here have been deployed in an R Shiny app so that you can try them out
+          on your own data. Seed germination data is the typical use-case, and we have several example datasets built
+          into the app, but the models may also be applied to other time-series datasets.</p>
+      </div>
+      <div>
+        <!-- TODO: Replace src with your hosted video URL -->
+        TODO: Replace with screenshot of the app.
+      </div>
+    </div>
+  </section>
+
+  <!-- References -->
+  <section class="references">
+    <div class="references-inner">
+      <p class="intro">With this brief background, the videos above illustrate how each component of this model works to
+        influence the response fractions and rates in relation to variation in factor levels and time constants. For
+        examples and information on applications of PBT models to seed germination behavior and other biological
+        processes, see the references below.</p>
+      <div class="ref-card">
+        <p><strong>Bradford KJ, Bello P</strong> (2022) Applying population-based threshold models to quantify and
+          improve seed quality attributes. <em>In</em> J Buitink, O Leprince, eds, Advances in Seed Science and
+          Technology for More Sustainable Crop Production. Burleigh Dodds Science Publishing, Cambridge, UK</p>
+      </div>
+      <div class="ref-card">
+        <p><strong>Bradford KJ</strong> (2018) Interpreting biological variation: seeds, populations and sensitivity
+          thresholds. Seed Sci Res <strong>28:</strong>158-167. <a href="https://dx.doi.org/10.1017/S0960258518000156"
+            target="_blank">DOI:10.1017/S0960258518000156</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <img src="images/PBTModels-Logo.jpg" alt="PBTModels">
+      <p>&copy; 2025 PBTModels.</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>
