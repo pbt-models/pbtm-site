@@ -7,6 +7,8 @@
   <title>PBTModels - The Rolling Ball Analogy</title>
   <meta name="description"
     content="Explore the Rolling Ball Analogy through engaging animated videos that simplify the understanding of Population-Based Threshold models and their interactions.">
+  <meta name="keywords" content="germination, statistics, analysis, population, threshold, model">
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
   <style>
     *,
     *::before,
@@ -152,6 +154,33 @@
       background: #000;
     }
 
+    .section img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    /* App button */
+    .app-button {
+      display: block;
+      width: fit-content;
+      margin: 2rem auto 0;
+      background: var(--color-primary);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 0.7rem 1.5rem;
+      border-radius: 999px;
+      border: 2px solid var(--color-primary);
+      transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(45, 106, 46, 0.25);
+    }
+
+    .app-button:hover {
+      background: #fff;
+      color: var(--color-primary);
+      box-shadow: 0 4px 16px rgba(45, 106, 46, 0.35);
+    }
+
     /* References */
     .references {
       background: var(--color-dark);
@@ -170,6 +199,11 @@
 
     .references .intro {
       margin-bottom: 2rem;
+    }
+
+    .references a,
+    .references a:visited {
+      color: white;
     }
 
     .ref-card {
@@ -197,7 +231,7 @@
     }
 
     .footer-inner img {
-      height: 40px;
+      height: 50px;
       width: auto;
     }
 
@@ -226,10 +260,13 @@
   <header class="site-header">
     <div class="header-inner">
       <a href="#" class="logo">
-        <img src="images/pbt-models-logo.jpg" alt="PBTModels">
+        <img src="images/pbt-models-logo.jpg" alt="PBT models logo">
       </a>
       <nav>
         <a href="#">Home</a>
+        <a href="https://github.com/pbt-models">GitHub</a>
+        <a href="https://github.com/pbt-models/pbtm-app">App</a>
+        <a href="https://github.com/pbt-models/pbtm">R Package</a>
         <a href="mailto:contact@pbtmodels.org">Contact</a>
       </nav>
     </div>
@@ -264,8 +301,10 @@
           the response from occurring is termed the base level.</p>
       </div>
       <div>
-        <!-- TODO: Replace src with your hosted video URL -->
-        <video controls poster="" src="REPLACE_WITH_VIDEO_URL/RollingBall-FactorsBaseLevels.mp4"></video>
+        <video controls preload="metadata">
+          <source src="videos/RollingBall-FactorsBaseLevels.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
   </section>
@@ -281,8 +320,10 @@
             &ndash; X</em>).</p>
       </div>
       <div>
-        <!-- TODO: Replace src with your hosted video URL -->
-        <video controls src="REPLACE_WITH_VIDEO_URL/RollingBall-ResponseRate.mp4"></video>
+        <video controls preload="metadata">
+          <source src="videos/RollingBall-ResponseRate.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
   </section>
@@ -310,8 +351,10 @@
         </p>
       </div>
       <div>
-        <!-- TODO: Replace src with your hosted video URL -->
-        <video controls src="REPLACE_WITH_VIDEO_URL/RollingBall-TimeConstant.mp4"></video>
+        <video controls preload="metadata">
+          <source src="videos/RollingBall-TimeConstant.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
   </section>
@@ -333,8 +376,10 @@
             &theta;<sub>X</sub></em>.</p>
       </div>
       <div>
-        <!-- TODO: Replace src with your hosted video URL -->
-        <video controls src="REPLACE_WITH_VIDEO_URL/RollingBall-ThresholdVariation-1.mp4"></video>
+        <video controls preload="metadata">
+          <source src="videos/RollingBall-ThresholdVariation.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
     </div>
   </section>
@@ -347,10 +392,12 @@
         <p>Most of the threshold models described here have been deployed in an R Shiny app so that you can try them out
           on your own data. Seed germination data is the typical use-case, and we have several example datasets built
           into the app, but the models may also be applied to other time-series datasets.</p>
+        <a href="https://connect.doit.wisc.edu/pbtm/" target="_blank" class="app-button">Launch the app</a>
       </div>
       <div>
-        <!-- TODO: Replace src with your hosted video URL -->
-        TODO: Replace with screenshot of the app.
+        <a href="https://connect.doit.wisc.edu/pbtm/" target="_blank">
+          <img src="images/pbtm-app-screenshot.png" alt="PBTM app screenshot">
+        </a>
       </div>
     </div>
   </section>
@@ -378,8 +425,8 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <img src="images/PBTModels-Logo.jpg" alt="PBTModels">
-      <p>&copy; 2025 PBTModels.</p>
+      <img src="images/pbt-models-logo.jpg" alt="PBT models logo">
+      <p>&copy; 2026 PBTModels</p>
     </div>
   </footer>
 
