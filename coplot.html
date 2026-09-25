@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PBTModels - CoPlot Tutorial</title>
+    <meta
+      name="description"
+      content="A short tutorial on using the CoPlot program to plot data and predictions from population-based threshold (PBT) models."
+    />
+    <meta
+      name="keywords"
+      content="CoPlot, germination, population, threshold, model, plotting, tutorial"
+    />
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <img src="images/pbt-models-logo.jpg" alt="PBT models logo" />
+        </a>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="book.html">Book</a>
+          <a href="coplot.html" class="active">CoPlot</a>
+          <a href="app.html">Shiny App</a>
+          <a href="rpackage.html">R Package</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Title -->
+    <section class="page-hero">
+      <h1>CoPlot Tutorial for plotting PBT data and models</h1>
+      <p>Kent J. Bradford</p>
+    </section>
+
+    <!-- Article -->
+    <article class="article">
+      <h2>Introduction</h2>
+      <p>
+        The population-based threshold (PBT) model has been described in detail
+        in Bradford and Bello (2022) and Bradford (2026). Ways to fit data to
+        the model have also been published (Bradford, 1990; Bello and Bradford,
+        2016; Onofri et al., 2018) and an RShiny app is available for use that
+        will both fit the model and prepare graphs of the results (<a
+          href="https://connect.doit.wisc.edu/pbtm/"
+          target="_blank"
+          >https://connect.doit.wisc.edu/pbtm/</a
+        >). However, it is also useful to have a graphics program to plot data
+        and illustrate the predictions of the PBT model, and many such programs
+        are available. The one that I used for many years was the CoPlot program
+        produced by CoHort. Unfortunately, that company closed a number of years
+        ago, but fortunately, due to demand from prior users, they have now
+        provided free access to the program itself (as well as its companion
+        programs CoStat and CoText). This short tutorial will describe how to
+        use CoPlot to plot data using the PBT model.
+      </p>
+
+      <h2>CoPlot access</h2>
+      <p>
+        The CoPlot program can be downloaded from
+        <a href="https://cohortsoftware.com/coplot.html" target="_blank"
+          >https://cohortsoftware.com/coplot.html</a
+        >. Follow the instructions there to download the required files and
+        install the program on your own computer. Running the file
+        &ldquo;coplot&rdquo; [Windows batch file] will open the program. There
+        are tutorials available from the same site for utilizing the various
+        features of the program. I will focus here only on how to create
+        functions that will plot predictions from the PBT model based on its
+        three main variables.
+      </p>
+
+      <h2>Plotting the PBT model</h2>
+      <p>
+        The core of the PBT model is a normal distribution of sensitivities of
+        individuals in a population to various factors that can affect the
+        individuals&rsquo; behaviors. To plot a normal distribution, create a
+        Graph and then create a Function and enter
+        <code>norm((x-&mu;)/&sigma;)</code>, where &ldquo;norm&rdquo; indicates
+        a normal distribution function, &ldquo;x&rdquo; represents the values of
+        the x-axis that the program will insert, &ldquo;<em>&mu;</em>&rdquo; is
+        the mean value for the distribution, and &ldquo;<em>&sigma;</em>&rdquo;
+        is the standard deviation of the distribution. Using values of 0 for
+        <em>&mu;</em> and 1 for <em>&sigma;</em>, this will produce the plot
+        <strong>A</strong> below. The median of the distribution is 0 and the
+        spread is about 6&nbsp;<em>&sigma;</em>.
+      </p>
+
+      <figure class="single">
+        <img
+          src="images/coplot-graph-a.png"
+          alt="Graph A: normal distribution with mean 0 and standard deviation 1, fraction versus standard deviations"
+        />
+      </figure>
+
+      <p>
+        To plot the cumulative version of this distribution, create a Function
+        <code>cumNorm((x-4)/1)</code>, where <em>&mu;</em> has been given the
+        value of 4 and <em>&sigma;</em> has been given the value of 1. This will
+        result in graph <strong>B</strong> below, which is the cumulative
+        version of the distribution in graph <strong>A</strong> based on
+        increasing amounts of a promotive regulatory or interactive factor. This
+        type of distribution is generally associated with a dose-response curve,
+        for example.
+      </p>
+
+      <figure class="single">
+        <img
+          src="images/coplot-graph-b.png"
+          alt="Graph B: cumulative normal distribution with mean 4 and standard deviation 1, cumulative fraction versus factor level"
+        />
+      </figure>
+
+      <p>
+        It is often the case that the dose-response curve is normally
+        distributed on a logarithmic dosage scale rather than a linear one, as
+        shown in the standard cumulative form in the graph
+        <strong>C</strong> below. This cumulative distribution is based on a
+        normal distribution on a logarithmic scale (inset, graph
+        <strong>D</strong> below). However, plotting the distribution curve on a
+        linear scale illustrates the change in shape, with a sharp rise and slow
+        (i.e., exponential) decline across the same range of factor levels
+        (graph <strong>D</strong> below). These graphs can be plotted using the
+        same &ldquo;norm&rdquo; and &ldquo;cumNorm&rdquo; functions as above,
+        but by inserting &ldquo;log(x)&rdquo;, &ldquo;log(<em>&mu;</em>)&rdquo;
+        and &ldquo;log(<em>&sigma;</em>)&rdquo; where these terms appear (i.e.,
+        <code>norm((log(x)-log(3))/log(3))</code> or
+        <code>cumNorm((log(x)-log(3))/log(3))</code> for the graphs shown). The
+        x-axis can be changed from linear to logarithmic by selecting &ldquo;X
+        axis&rdquo; on the Graph menu and changing the scale from &ldquo;Linear
+        Scale&rdquo; to &ldquo;Log Base 10&rdquo;.
+      </p>
+
+      <figure>
+        <img
+          src="images/coplot-graph-cd.png"
+          alt="Graph C: cumulative log-normal distribution on a log-scale factor axis. Graph D: the same distribution on a linear scale, with a sharp rise and slow decline, and an inset showing it as a normal curve on a log scale"
+        />
+      </figure>
+
+      <p>
+        These basic formulas can be used to plot the normal and cumulative
+        distributions using the values of <em>&mu;</em> and <em>&sigma;</em> for
+        the population of interest.
+      </p>
+
+      <h2>
+        Plotting PBT time courses based upon threshold distribution and time
+        constant
+      </h2>
+      <p>
+        The cumulative equation can be modified to include the time constant
+        (<em>&theta;</em>) in the PBT model, which is defined as
+        <em>&theta;</em> = (<em>X</em>&ndash;<em>X<sub>b</sub></em
+        >(<em>i</em>))<em>t<sub>i</sub></em
+        >, where <em>X</em> is the factor level, <em>X<sub>b</sub></em
+        >(<em>i</em>) represents the distribution of sensitivities of
+        individuals (<em>i</em>) to <em>X</em>, and <em>t<sub>i</sub></em> is
+        the time for individual <em>i</em> to respond to that factor level. This
+        then predicts the time course of responses to a given factor level based
+        upon the sensitivity distribution and the time constant. In CoPlot, this
+        can be entered as a function:
+        <code>cumNorm(((X-&theta;/x)-&mu;)/&sigma;)</code>. This function will
+        plot the time courses of responses of the population defined by
+        <em>&mu;</em> and <em>&sigma;</em> and the value of the time constant
+        <em>&theta;</em>. For example, using the same values as in graph
+        <strong>B</strong> for <em>&mu;</em> and <em>&sigma;</em> (4 and 1) and
+        values of 6 for <em>X</em> and 2 for <em>&theta;</em>, the solid curve
+        in graph <strong>E</strong> below will be plotted. Using the same values
+        for <em>&theta;</em>, <em>&mu;</em> and <em>&sigma;</em> but decreasing
+        the factor levels by steps of 1 (i.e., to 5, 4 and 3), the resulting
+        curves are shown with decreasing dash sizes as the level of the
+        promotive factor decreases (graph <strong>E</strong>). This illustrates
+        the two key features of the PBT model, which are that as the factor
+        level increases for a promoter (i.e., from 3 to 6 in this example), the
+        number of individuals recruited to respond increases and their response
+        times are shortened. If the factor is an inhibitor rather than a
+        promoter, the Function can be modified to
+        <code>cumNorm(((X+&theta;/x)-&mu;)/&sigma;)</code> and the curves will
+        be lower as the factor level increases. Changing the time constant
+        (increasing here from 2 to 8) delays responses across all factor levels,
+        as shown in graph <strong>F</strong> below.
+      </p>
+
+      <figure>
+        <img
+          src="images/coplot-graph-ef.png"
+          alt="Graphs E and F: cumulative fraction versus time for factor levels 6, 5, 4 and 3, with time constant 2 in graph E and 8 in graph F"
+        />
+      </figure>
+
+      <h2>Subpopulations</h2>
+      <p>
+        In the examples above, the total population is set to 1, and the
+        distributions and time courses indicate the fractions of this total
+        population on the y axis. However, multiple subpopulations can be
+        present within a total population. This is often the case for seeds, for
+        example, where seeds from different productions might be blended
+        together into a single lot. The presence of such subpopulations can be
+        accounted for by multiplying the functions above by the appropriate
+        scaling factor. For example, seed populations are generally referred to
+        as percentages of the total number of seeds, with a maximum of 100%. In
+        that case, multiplying the equations in graphs <strong>E</strong> or
+        <strong>F</strong> by 100 would change the y-scale to 0 to 100, and the
+        curves might then represent the percentage of seeds having germinated by
+        each time point. With mixtures, each subpopulation can be defined by its
+        own values of <em>&theta;</em>, <em>&mu;</em> and <em>&sigma;</em>, and
+        then each Function is multiplied by the fraction of the total that is
+        represented by each subpopulation. Thus, if the two populations
+        represented in graphs <strong>E</strong> and <strong>F</strong> were
+        blended in the amounts of 25 and 75% of the total, multiplying the
+        function in <strong>E</strong> by 0.25 and the function in
+        <strong>F</strong> by 0.75 would give the curves shown in graph
+        <strong>G</strong> below. Adding those two functions in a single
+        function, i.e.,
+        <code>0.25*cumNorm(((6-2/x)-4)/1)+0.75*cumNorm(((6-8/x)-4)/1)</code>,
+        gives the time course of the total population at the highest factor
+        level (6). The values of each parameter in each subpopulation as well as
+        their fractions in the total population can be varied, resulting in a
+        wide range of possible combined time courses even at a single factor
+        level.
+      </p>
+
+      <figure class="single">
+        <img
+          src="images/coplot-graph-g.png"
+          alt="Graph G: time courses of a 25% subpopulation with time constant 2, a 75% subpopulation with time constant 8, and their combined total"
+        />
+      </figure>
+    </article>
+
+    <!-- References -->
+    <section class="references">
+      <div class="references-inner">
+        <h2>References cited</h2>
+        <div class="ref-card">
+          <p>
+            <strong>Bello P, Bradford KJ</strong> (2016) Single-seed oxygen
+            consumption measurements and population-based threshold models link
+            respiration and germination rates under diverse conditions. Seed Sci
+            Res <strong>26:</strong>199&ndash;221.
+            <a href="https://doi.org/10.1017/S0960258516000179" target="_blank"
+              >DOI:10.1017/S0960258516000179</a
+            >
+          </p>
+        </div>
+        <div class="ref-card">
+          <p>
+            <strong>Bradford KJ</strong> (1990) A water relations analysis of
+            seed germination rates. Plant Physiol
+            <strong>94:</strong>840&ndash;849.
+            <a href="https://doi.org/10.1104/pp.94.2.840" target="_blank"
+              >DOI:10.1104/pp.94.2.840</a
+            >
+          </p>
+        </div>
+        <div class="ref-card">
+          <p>
+            <strong>Bradford KJ</strong> (2026) Populations of Individuals:
+            Understanding Biological Variation from Molecules to Ecosystems.
+            Oxford University Press, New York, NY.
+            <a
+              href="https://doi.org/10.1093/9780197846032.001.0001"
+              target="_blank"
+              >DOI:10.1093/9780197846032.001.0001</a
+            >
+          </p>
+        </div>
+        <div class="ref-card">
+          <p>
+            <strong>Bradford KJ, Bello P</strong> (2022) Applying
+            population-based threshold models to quantify and improve seed
+            quality attributes. <em>In</em> J Buitink, O Leprince, eds, Advances
+            in Seed Science and Technology for More Sustainable Crop Production.
+            Burleigh Dodds Science Publishing, Cambridge, UK.
+            <a href="https://doi.org/10.19103/AS.2022.0105.05" target="_blank"
+              >DOI:10.19103/AS.2022.0105.05</a
+            >
+          </p>
+        </div>
+        <div class="ref-card">
+          <p>
+            <strong>Onofri A, et al.</strong> (2018) Hydrothermal-time-to-event
+            models for seed germination. Eur J Agron
+            <strong>101:</strong>129&ndash;139.
+            <a href="https://doi.org/10.1016/j.eja.2018.08.011" target="_blank"
+              >DOI:10.1016/j.eja.2018.08.011</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <img src="images/pbt-models-logo.jpg" alt="PBT models logo" />
+        <p>&copy; 2026 PBTModels</p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PBTModels - PBTM App</title>
+    <meta
+      name="description"
+      content="An interactive R Shiny app for fitting population-based threshold (PBT) models to seed germination and other time-course data."
+    />
+    <meta
+      name="keywords"
+      content="germination, population, threshold, model, shiny, app, hydrotime, thermal time"
+    />
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="index.html" class="logo">
+          <img src="images/pbt-models-logo.jpg" alt="PBT models logo" />
+        </a>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="book.html">Book</a>
+          <a href="coplot.html">CoPlot</a>
+          <a href="app.html" class="active">Shiny App</a>
+          <a href="rpackage.html">R Package</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Title -->
+    <section class="page-hero">
+      <h1>The PBTM App</h1>
+      <p>
+        An interactive, easy-to-use R Shiny app for fitting population-based
+        threshold models to your own data.
+      </p>
+      <div class="button-row">
+        <a
+          href="https://connect.doit.wisc.edu/pbtm/"
+          target="_blank"
+          class="button"
+          >Launch the app</a
+        >
+        <a
+          href="https://github.com/pbt-models/pbtm-app"
+          target="_blank"
+          class="button"
+          >View on GitHub</a
+        >
+      </div>
+    </section>
+
+    <!-- Article -->
+    <article class="article wide">
+      <h2>About the app</h2>
+      <p>
+        Population-based threshold (PBT) models describe a population as a
+        normal distribution of individual sensitivity thresholds to some factor,
+        such as temperature, water, or a hormone. As the factor level increases,
+        more individuals have their thresholds exceeded and are recruited to
+        respond, and each responds faster in proportion to how far the factor
+        level exceeds its threshold. The result is a family of time courses
+        whose shapes reveal the underlying threshold distribution (its mean and
+        standard deviation) and a time constant that sets the speed of response.
+      </p>
+      <p>
+        The app fits these models to dose-response time-course data using
+        nonlinear least squares, analyzing all factor levels at once to find the
+        common population parameters. Those parameters can then be used to
+        predict the population&rsquo;s response to any factor level or to
+        compare treatments. Seed germination is the original and main use case,
+        but the same approach applies wherever individuals vary in their
+        sensitivity, from molecules and cells to organisms and ecosystems.
+      </p>
+
+      <figure>
+        <a href="https://connect.doit.wisc.edu/pbtm/" target="_blank">
+          <img src="images/pbtm-app-screenshot.png" alt="PBTM app screenshot" />
+        </a>
+      </figure>
+
+      <h2>Getting started</h2>
+      <p>
+        Pick one of the built-in sample datasets, or upload your own data as an
+        Excel file. A template with the expected column headings can be
+        downloaded from the Upload Data tab. At a minimum, each row needs a
+        cumulative elapsed time (<code>CumTime</code>) and the cumulative
+        fraction germinated at that time (<code>CumFraction</code>, from 0 to
+        1). Treatment columns such as temperature (<code>GermTemp</code>) or
+        water potential (<code>GermWP</code>) should repeat the treatment value
+        on every row belonging to that treatment. You can use your own column
+        names and match them to the expected ones after uploading.
+      </p>
+      <p>
+        Once your data is loaded, a green check appears next to each model that
+        can be applied to it. Most models let you choose which treatment levels
+        to include, filter out other treatments, and use &ldquo;cleaned&rdquo;
+        data that drops time points where germination didn&rsquo;t increase. You
+        can also hold some parameters fixed to see how the others change the
+        predicted time courses.
+      </p>
+
+      <h2>Available models</h2>
+      <p>
+        In the equations below, <em>t<sub>g</sub></em> is the time to
+        germination of fraction <em>g</em> of the population, and terms marked
+        (<em>g</em>) vary across the population in a normal distribution with
+        standard deviation <em>&sigma;</em>.
+      </p>
+
+      <div class="model-grid">
+        <div class="model-card">
+          <h3>Germination</h3>
+          <p>
+            A first look at your data: plots germination time courses by
+            treatment and calculates the times to 10, 16, 50, 84 and 90%
+            germination (or their inverses, germination rates). The 16% and 84%
+            values are one standard deviation either side of the median.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <h3>Thermal time</h3>
+          <p class="equation">
+            &theta;<sub>T</sub>(g) = (T &minus; T<sub>b</sub>) t<sub>g</sub>
+          </p>
+          <p>
+            For germination at several temperatures. Estimates the base
+            temperature <em>T<sub>b</sub></em> (the minimum for germination),
+            the thermal time constant <em>&theta;<sub>T</sub></em
+            >(50) and its standard deviation.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <h3>Hydrotime</h3>
+          <p class="equation">
+            &theta;<sub>H</sub> = (&psi; &minus; &psi;<sub>b</sub>(g)) t<sub
+              >g</sub
+            >
+          </p>
+          <p>
+            For germination at several water potentials. Estimates the hydrotime
+            constant <em>&theta;<sub>H</sub></em
+            >, the median base water potential <em>&psi;<sub>b</sub></em
+            >(50) and the spread of base water potentials across the seed
+            population.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <h3>Hydrothermal time</h3>
+          <p class="equation">
+            &theta;<sub>HT</sub> = (&psi; &minus; &psi;<sub>b</sub>(g))(T
+            &minus; T<sub>b</sub>) t<sub>g</sub>
+          </p>
+          <p>
+            Combines the two above for data that vary in both temperature and
+            water potential, estimating a single hydrothermal time constant
+            along with <em>&psi;<sub>b</sub></em
+            >(50), <em>&sigma;</em> and <em>T<sub>b</sub></em
+            >.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <h3>Hydropriming time</h3>
+          <p class="equation">
+            GR<sub>50</sub> = GR<sub>i</sub> + (&psi;<sub>P</sub> &minus;
+            &psi;<sub>min</sub>) t<sub>P</sub> / &theta;<sub>HP</sub>
+          </p>
+          <p>
+            Priming hydrates seeds to just below the level needed to germinate,
+            then dries them, which speeds up and synchronizes later germination.
+            This model relates the gain in median germination rate to the
+            priming water potential and duration, so you can pick a priming
+            treatment that gives the best effect.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <h3>Hydrothermal priming time</h3>
+          <p class="equation">
+            GR<sub>50</sub> = GR<sub>i</sub> + (&psi;<sub>P</sub> &minus;
+            &psi;<sub>min</sub>)(T<sub>P</sub> &minus; T<sub>min</sub>) t<sub
+              >P</sub
+            >
+            / &theta;<sub>HTP</sub>
+          </p>
+          <p>
+            Extends hydropriming time to include priming temperature. Different
+            combinations of temperature, water potential and duration that add
+            up to the same hydrothermal priming time give similar results, so
+            you can choose whichever is most convenient or economical.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <h3>Aging time</h3>
+          <p class="equation">
+            &theta;<sub>age</sub> = (p<sub>max</sub>(g) &minus; p) t<sub>g</sub>
+          </p>
+          <p>
+            As seeds age, germination slows before viability starts to drop.
+            This model uses those early delays to predict the later decline in
+            viability from the distribution of maximum seed lifetimes
+            <em>p<sub>max</sub></em
+            >(g), using germination tests on seeds stored for relatively short
+            periods.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <h3>Promoters</h3>
+          <p class="equation">
+            &theta;<sub>GA</sub> = (log[GA] &minus; log[GA<sub>b</sub>(g)])
+            t<sub>g</sub>
+          </p>
+          <p>
+            For factors that promote germination, such as the hormone
+            gibberellin (GA). Estimates the promoter time constant, the median
+            base concentration <em>P<sub>b</sub></em
+            >(50) and its standard deviation. Doses can be linear or
+            logarithmic.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <h3>Inhibitors</h3>
+          <p class="equation">
+            &theta;<sub>ABA</sub> = (log[ABA<sub>b</sub>(g)] &minus; log[ABA])
+            t<sub>g</sub>
+          </p>
+          <p>
+            For factors that inhibit germination, such as the hormone abscisic
+            acid (ABA). Estimates the inhibitor time constant, the median base
+            concentration <em>I<sub>b</sub></em
+            >(50) and its standard deviation. Doses can be linear or
+            logarithmic.
+          </p>
+        </div>
+
+        <div class="model-card">
+          <h3>Subpopulations</h3>
+          <p>
+            Seed lots are often blends of lots produced in different places or
+            conditions, so their germination doesn't follow a single normal
+            distribution. This model fits the total population as a mixture of
+            subpopulations, each with its own PBT parameters and share of the
+            total, to unpick complex germination patterns.
+          </p>
+        </div>
+      </div>
+
+      <div class="button-row">
+        <a
+          href="https://connect.doit.wisc.edu/pbtm/"
+          target="_blank"
+          class="button"
+          >Launch the app</a
+        >
+        <a
+          href="https://github.com/pbt-models/pbtm-app"
+          target="_blank"
+          class="button secondary"
+          >View on GitHub</a
+        >
+      </div>
+    </article>
+
+    <!-- References -->
+    <section class="references">
+      <div class="references-inner">
+        <h2>Key references</h2>
+        <div class="ref-card">
+          <p>
+            <strong>Bradford KJ</strong> (1990) A water relations analysis of
+            seed germination rates. Plant Physiol
+            <strong>94:</strong>840&ndash;849.
+            <a href="https://doi.org/10.1104/pp.94.2.840" target="_blank"
+              >DOI:10.1104/pp.94.2.840</a
+            >
+          </p>
+        </div>
+        <div class="ref-card">
+          <p>
+            <strong>Bradford KJ, Bello P</strong> (2022) Applying
+            population-based threshold models to quantify and improve seed
+            quality attributes. <em>In</em> J Buitink, O Leprince, eds, Advances
+            in Seed Science and Technology for More Sustainable Crop Production.
+            Burleigh Dodds Science Publishing, Cambridge, UK.
+            <a href="https://doi.org/10.19103/AS.2022.0105.05" target="_blank"
+              >DOI:10.19103/AS.2022.0105.05</a
+            >
+          </p>
+        </div>
+        <div class="ref-card">
+          <p>
+            <strong>Bradford KJ, Bello P</strong> (2023) Understanding seed
+            behavior: populations of individuals. Acta Hortic
+            <strong>1365:</strong>1&ndash;16.
+            <a
+              href="https://doi.org/10.17660/ActaHortic.2023.1365.1"
+              target="_blank"
+              >DOI:10.17660/ActaHortic.2023.1365.1</a
+            >
+          </p>
+        </div>
+        <div class="ref-card">
+          <p>
+            <strong>Bradford KJ</strong> (2026) Populations of Individuals:
+            Understanding Biological Variation from Molecules to Ecosystems.
+            Oxford University Press, New York, NY.
+            <a
+              href="https://doi.org/10.1093/9780197846032.001.0001"
+              target="_blank"
+              >DOI:10.1093/9780197846032.001.0001</a
+            >
+          </p>
+        </div>
+        <div class="ref-card">
+          <p>
+            <strong>Bello P, Bradford KJ</strong> (2016) Single-seed oxygen
+            consumption measurements and population-based threshold models link
+            respiration and germination rates under diverse conditions. Seed Sci
+            Res <strong>26:</strong>199&ndash;221.
+            <a href="https://doi.org/10.1017/S0960258516000179" target="_blank"
+              >DOI:10.1017/S0960258516000179</a
+            >
+          </p>
+        </div>
+        <p>The full reference list for each model is available in the app.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <img src="images/pbt-models-logo.jpg" alt="PBT models logo" />
+        <p>&copy; 2026 PBTModels</p>
+      </div>
+    </footer>
+  </body>
+</html>
