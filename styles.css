@@ -9,10 +9,12 @@
 }
 
 :root {
-  --color-primary: #2d6a2e;
+  /* --color-primary: #416796; */
+  --color-primary: #2c5484;
+  --color-secondary: #604a9e;
   --color-dark: #1a1a1a;
   --color-light: #f8f8f8;
-  --color-accent: #e07800;
+  --color-accent: #da694a;
   --max-width: 1100px;
 }
 
@@ -69,7 +71,7 @@ nav a.active {
 
 /* Page title */
 .page-hero {
-  background: linear-gradient(135deg, #1a3a1a 0%, #2d6a2e 40%, #e07800 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
   color: #fff;
   text-align: center;
   padding: 4rem 1.5rem;
@@ -315,11 +317,10 @@ nav a.active {
 
 /* Hero */
 .hero {
-  background: linear-gradient(135deg, #1a3a1a 0%, #2d6a2e 40%, #e07800 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 50%, var(--color-accent) 100%);
   color: #fff;
   text-align: center;
   padding: 5rem 1.5rem;
-  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -21,7 +21,7 @@
     <header class="site-header">
       <div class="header-inner">
         <a href="index.html" class="logo">
-          <img src="images/pbt-models-logo.jpg" alt="PBT models logo" />
+          <img src="images/pbt-models-logo.png" alt="PBT models logo" />
         </a>
         <nav>
           <a href="index.html">Home</a>
@@ -41,12 +41,24 @@
 
     <!-- Article -->
     <article class="article">
+      <h2>About the R package</h2>
+
       <p>
-        The <code>pbtm</code> R package is available on GitHub. It is currently
-        being updated, so it may not yet include all of the models in the
-        <a href="app.html">PBTM app</a>. For now, the app is the recommended way
-        to fit PBT models to your data.
+        The <code>pbtm</code> R package fits population-based threshold (PBT)
+        models to seed germination time courses. Each seed has a threshold for a
+        factor such as temperature, water potential, a hormone, or aging, and
+        thresholds vary normally across the seed population. Fitting the models
+        estimates the threshold distribution and the time constant of the
+        response, from which germination under other conditions can be
+        predicted.
       </p>
+
+      <p>
+        The <a href="app.html">R Shiny app</a> provides an interactive interface
+        for fitting PBT models and implements the models available in the
+        package.
+      </p>
+
       <div class="button-row">
         <a
           href="https://github.com/pbt-models/pbtm"
@@ -54,14 +66,18 @@
           class="button"
           >View on GitHub</a
         >
-        <a href="app.html" class="button secondary">Go to the app</a>
+        <a
+          href="https://pbt-models.github.io/pbtm/"
+          target="_blank"
+          class="button"
+          >View the documentation</a
+        >
       </div>
     </article>
 
     <!-- Footer -->
     <footer class="site-footer">
       <div class="footer-inner">
-        <img src="images/pbt-models-logo.jpg" alt="PBT models logo" />
         <p>&copy; 2026 PBTModels</p>
       </div>
     </footer>

@@ -1,181 +1,251 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PBTModels - The Rolling Ball Analogy</title>
+    <meta
+      name="description"
+      content="Explore the Rolling Ball Analogy through engaging animated videos that simplify the understanding of Population-Based Threshold models and their interactions."
+    />
+    <meta
+      name="keywords"
+      content="germination, statistics, analysis, population, threshold, model"
+    />
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PBTModels - The Rolling Ball Analogy</title>
-  <meta name="description"
-    content="Explore the Rolling Ball Analogy through engaging animated videos that simplify the understanding of Population-Based Threshold models and their interactions.">
-  <meta name="keywords" content="germination, statistics, analysis, population, threshold, model">
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-
-  <!-- Header -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="#" class="logo">
-        <img src="images/pbt-models-logo.jpg" alt="PBT models logo">
-      </a>
-      <nav>
-        <a href="#" class="active">Home</a>
-        <a href="book.html">Book</a>
-        <a href="coplot.html">CoPlot</a>
-        <a href="app.html">Shiny App</a>
-        <a href="rpackage.html">R Package</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <h1>PBTModels: The rolling ball analogy</h1>
-    <p>Population-based threshold (PBT) models are conceptually simple, but it can be hard to visualize how the
-      different components fit together and influence the predicted behaviors. We have developed different analogous
-      examples that can help users understand how the different components interact. Here, we illustrate the Rolling
-      Ball Analogy in a series of animated videos.</p>
-    <p>The PBT models have only a few basic components:</p>
-    <div class="hero-buttons">
-      <a href="#factors-baselevels">Factors and base levels</a>
-      <a href="#response-rate">Response Rate</a>
-      <a href="#time-constant">Time Constant</a>
-      <a href="#base-thresholds-variation">Base thresholds variation</a>
-    </div>
-  </section>
-
-  <!-- Section: Factors and base levels -->
-  <section class="section" id="factors-baselevels">
-    <div class="section-grid">
-      <div>
-        <h2>Factors and base levels</h2>
-        <p>The responding entities (molecules, cells, seeds, organisms, etc.) have thresholds for sensing factors (X) to
-          which they can respond. For a factor <strong>promoter (+)</strong> of a response, such as a hormone, there
-          will be a minimum threshold concentration that will trigger a response, whether for a cell or for a seed. This
-          threshold sensitivity of factor X is termed the base level for that factor, or <em>X<sub>b</sub></em>. If the
-          factor is an <strong>inhibitor (&ndash;)</strong> of the response, then the factor level that just prevents
-          the response from occurring is termed the base level.</p>
+  <body>
+    <!-- Header -->
+    <header class="site-header">
+      <div class="header-inner">
+        <a href="#" class="logo">
+          <img src="images/pbt-models-logo.png" alt="PBT models logo" />
+        </a>
+        <nav>
+          <a href="#" class="active">Home</a>
+          <a href="book.html">Book</a>
+          <a href="coplot.html">CoPlot</a>
+          <a href="app.html">Shiny App</a>
+          <a href="rpackage.html">R Package</a>
+        </nav>
       </div>
-      <div>
-        <video controls preload="metadata">
-          <source
-            src="https://github.com/pbt-models/pbtm-site/releases/download/assets/RollingBall-FactorsBaseLevels.mp4"
-            type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- Section: Response rate -->
-  <section class="section" id="response-rate">
-    <div class="section-grid">
-      <div>
-        <h2>Response rate</h2>
-        <p>The rate at which the response is activated or progresses is proportional to the difference between the
-          factor level (X) and the base threshold sensitivity to it (<em>X<sub>b</sub></em>):</p>
-        <p><strong>(+)</strong> (<em>X &ndash; X<sub>b</sub></em>) or <strong>(&ndash;)</strong> (<em>X<sub>b</sub>
-            &ndash; X</em>).</p>
+    <!-- Hero -->
+    <section class="hero">
+      <h1>PBTModels: The rolling ball analogy</h1>
+      <p>
+        Population-based threshold (PBT) models are conceptually simple, but it
+        can be hard to visualize how the different components fit together and
+        influence the predicted behaviors. We have developed different analogous
+        examples that can help users understand how the different components
+        interact. Here, we illustrate the Rolling Ball Analogy in a series of
+        animated videos.
+      </p>
+      <p>The PBT models have only a few basic components:</p>
+      <div class="hero-buttons">
+        <a href="#factors-baselevels">Factors and base levels</a>
+        <a href="#response-rate">Response Rate</a>
+        <a href="#time-constant">Time Constant</a>
+        <a href="#base-thresholds-variation">Base thresholds variation</a>
       </div>
-      <div>
-        <video controls preload="metadata">
-          <source src="https://github.com/pbt-models/pbtm-site/releases/download/assets/RollingBall-ResponseRate.mp4"
-            type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section: Time constant -->
-  <section class="section" id="time-constant">
-    <div class="section-grid">
-      <div>
-        <h2>Time constant</h2>
-        <p>The product of this difference in factor level in excess or below the base threshold (<em>X &ndash;
-            X<sub>b</sub></em> or <em>X<sub>b</sub> &ndash; X</em>, respectively) and the time to response (<em>t</em>)
-          is a constant, called the time constant (<em>&theta;<sub>X</sub></em>), resulting in the following equation
-          for the model:</p>
-        <p><strong>(+)</strong> <em>&theta;<sub>X</sub></em> = (<em>X &ndash; X<sub>b</sub></em>) <em>t</em> or
-          <strong>(&ndash;)</strong> <em>&theta;<sub>X</sub></em> = (<em>X<sub>b</sub> &ndash; X</em>) <em>t</em>.
+    <!-- Section: Factors and base levels -->
+    <section class="section" id="factors-baselevels">
+      <div class="section-grid">
+        <div>
+          <h2>Factors and base levels</h2>
+          <p>
+            The responding entities (molecules, cells, seeds, organisms, etc.)
+            have thresholds for sensing factors (X) to which they can respond.
+            For a factor <strong>promoter (+)</strong> of a response, such as a
+            hormone, there will be a minimum threshold concentration that will
+            trigger a response, whether for a cell or for a seed. This threshold
+            sensitivity of factor X is termed the base level for that factor, or
+            <em>X<sub>b</sub></em
+            >. If the factor is an <strong>inhibitor (&ndash;)</strong> of the
+            response, then the factor level that just prevents the response from
+            occurring is termed the base level.
+          </p>
+        </div>
+        <div>
+          <video controls preload="metadata">
+            <source
+              src="https://github.com/pbt-models/pbtm-site/releases/download/assets/RollingBall-FactorsBaseLevels.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Response rate -->
+    <section class="section" id="response-rate">
+      <div class="section-grid">
+        <div>
+          <h2>Response rate</h2>
+          <p>
+            The rate at which the response is activated or progresses is
+            proportional to the difference between the factor level (X) and the
+            base threshold sensitivity to it (<em>X<sub>b</sub></em
+            >):
+          </p>
+          <p>
+            <strong>(+)</strong> (<em>X &ndash; X<sub>b</sub></em
+            >) or <strong>(&ndash;)</strong> (<em>X<sub>b</sub> &ndash; X</em>).
+          </p>
+        </div>
+        <div>
+          <video controls preload="metadata">
+            <source
+              src="https://github.com/pbt-models/pbtm-site/releases/download/assets/RollingBall-ResponseRate.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Time constant -->
+    <section class="section" id="time-constant">
+      <div class="section-grid">
+        <div>
+          <h2>Time constant</h2>
+          <p>
+            The product of this difference in factor level in excess or below
+            the base threshold (<em>X &ndash; X<sub>b</sub></em> or
+            <em>X<sub>b</sub> &ndash; X</em>, respectively) and the time to
+            response (<em>t</em>) is a constant, called the time constant (<em
+              >&theta;<sub>X</sub></em
+            >), resulting in the following equation for the model:
+          </p>
+          <p>
+            <strong>(+)</strong> <em>&theta;<sub>X</sub></em> = (<em
+              >X &ndash; X<sub>b</sub></em
+            >) <em>t</em> or <strong>(&ndash;)</strong>
+            <em>&theta;<sub>X</sub></em> = (<em>X<sub>b</sub> &ndash; X</em>)
+            <em>t</em>.
+          </p>
+          <p>
+            Thus, as the factor level difference increases, the time to
+            occurrence of the regulated process decreases proportionately to
+            keep <em>&theta;<sub>X</sub></em> constant. Since rates are the
+            inverse of the time required for something to happen, this can also
+            be shown as:
+          </p>
+          <p>
+            <strong>(+)</strong> <em>Response rate = 1 / t</em> = (<em
+              >X &ndash; X<sub>b</sub></em
+            >) / <em>&theta;<sub>X</sub></em> or
+          </p>
+          <p>
+            <strong>(&ndash;)</strong> <em>Response rate = 1 / t</em> = (<em
+              >X<sub>b</sub> &ndash; X</em
+            >) / <em>&theta;<sub>X</sub></em
+            >.
+          </p>
+        </div>
+        <div>
+          <video controls preload="metadata">
+            <source
+              src="https://github.com/pbt-models/pbtm-site/releases/download/assets/RollingBall-TimeConstant.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section: Base thresholds variation -->
+    <section class="section" id="base-thresholds-variation">
+      <div class="section-grid">
+        <div>
+          <h2>Base thresholds variation</h2>
+          <p>
+            The final feature of PBT models is that the values of the base
+            thresholds vary among the individual responding entities. That is,
+            <em>X<sub>b</sub></em> varies among individuals, generally in a
+            normal distribution that can be defined by its mean and standard
+            deviation. This results in the final equation for the PBT model,
+            where <em>X<sub>b</sub>(i)</em> indicates the normal distribution of
+            <em>X<sub>b</sub></em> values across individuals (or fraction)
+            <em>i</em>, and <em>t<sub>i</sub></em> is the time to response of
+            individual <em>i</em>:
+          </p>
+          <p>
+            <strong>(+)</strong>
+            <em
+              >Response rate = 1 / t<sub>i</sub> = [ X &ndash; X<sub>b</sub>(i)
+              ] / &theta;<sub>X</sub></em
+            >
+            or
+          </p>
+          <p>
+            <strong>(&ndash;)</strong>
+            <em
+              >Response rate = 1 / t<sub>i</sub> = [ X<sub>b</sub>(i) &ndash; X
+              ] / &theta;<sub>X</sub></em
+            >.
+          </p>
+        </div>
+        <div>
+          <video controls preload="metadata">
+            <source
+              src="https://github.com/pbt-models/pbtm-site/releases/download/assets/RollingBall-ThresholdVariation.mp4"
+              type="video/mp4"
+            />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- References -->
+    <section class="references">
+      <div class="references-inner">
+        <p class="intro">
+          With this brief background, the videos above illustrate how each
+          component of this model works to influence the response fractions and
+          rates in relation to variation in factor levels and time constants.
+          For examples and information on applications of PBT models to seed
+          germination behavior and other biological processes, see the
+          references below.
         </p>
-        <p>Thus, as the factor level difference increases, the time to occurrence of the regulated process decreases
-          proportionately to keep <em>&theta;<sub>X</sub></em> constant. Since rates are the inverse of the time
-          required for something to happen, this can also be shown as:</p>
-        <p><strong>(+)</strong> <em>Response rate = 1 / t</em> = (<em>X &ndash; X<sub>b</sub></em>) /
-          <em>&theta;<sub>X</sub></em> or
-        </p>
-        <p><strong>(&ndash;)</strong> <em>Response rate = 1 / t</em> = (<em>X<sub>b</sub> &ndash; X</em>) /
-          <em>&theta;<sub>X</sub></em>.
-        </p>
+        <div class="ref-card">
+          <p>
+            <strong>Bradford KJ, Bello P</strong> (2022) Applying
+            population-based threshold models to quantify and improve seed
+            quality attributes. <em>In</em> J Buitink, O Leprince, eds, Advances
+            in Seed Science and Technology for More Sustainable Crop Production.
+            Burleigh Dodds Science Publishing, Cambridge, UK
+          </p>
+        </div>
+        <div class="ref-card">
+          <p>
+            <strong>Bradford KJ</strong> (2018) Interpreting biological
+            variation: seeds, populations and sensitivity thresholds. Seed Sci
+            Res <strong>28:</strong>158-167.
+            <a
+              href="https://dx.doi.org/10.1017/S0960258518000156"
+              target="_blank"
+              >DOI:10.1017/S0960258518000156</a
+            >
+          </p>
+        </div>
       </div>
-      <div>
-        <video controls preload="metadata">
-          <source src="https://github.com/pbt-models/pbtm-site/releases/download/assets/RollingBall-TimeConstant.mp4"
-            type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Section: Base thresholds variation -->
-  <section class="section" id="base-thresholds-variation">
-    <div class="section-grid">
-      <div>
-        <h2>Base thresholds variation</h2>
-        <p>The final feature of PBT models is that the values of the base thresholds vary among the individual
-          responding entities. That is, <em>X<sub>b</sub></em> varies among individuals, generally in a normal
-          distribution that can be defined by its mean and standard deviation. This results in the final equation for
-          the PBT model, where <em>X<sub>b</sub>(i)</em> indicates the normal distribution of <em>X<sub>b</sub></em>
-          values across individuals (or fraction) <em>i</em>, and <em>t<sub>i</sub></em> is the time to response of
-          individual <em>i</em>:</p>
-        <p><strong>(+)</strong> <em>Response rate = 1 / t<sub>i</sub> = [ X &ndash; X<sub>b</sub>(i) ] /
-            &theta;<sub>X</sub></em> or</p>
-        <p><strong>(&ndash;)</strong> <em>Response rate = 1 / t<sub>i</sub> = [ X<sub>b</sub>(i) &ndash; X ] /
-            &theta;<sub>X</sub></em>.</p>
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p>&copy; 2026 PBTModels</p>
       </div>
-      <div>
-        <video controls preload="metadata">
-          <source
-            src="https://github.com/pbt-models/pbtm-site/releases/download/assets/RollingBall-ThresholdVariation.mp4"
-            type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
-  </section>
-
-  <!-- References -->
-  <section class="references">
-    <div class="references-inner">
-      <p class="intro">With this brief background, the videos above illustrate how each component of this model works to
-        influence the response fractions and rates in relation to variation in factor levels and time constants. For
-        examples and information on applications of PBT models to seed germination behavior and other biological
-        processes, see the references below.</p>
-      <div class="ref-card">
-        <p><strong>Bradford KJ, Bello P</strong> (2022) Applying population-based threshold models to quantify and
-          improve seed quality attributes. <em>In</em> J Buitink, O Leprince, eds, Advances in Seed Science and
-          Technology for More Sustainable Crop Production. Burleigh Dodds Science Publishing, Cambridge, UK</p>
-      </div>
-      <div class="ref-card">
-        <p><strong>Bradford KJ</strong> (2018) Interpreting biological variation: seeds, populations and sensitivity
-          thresholds. Seed Sci Res <strong>28:</strong>158-167. <a href="https://dx.doi.org/10.1017/S0960258518000156"
-            target="_blank">DOI:10.1017/S0960258518000156</a></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <img src="images/pbt-models-logo.jpg" alt="PBT models logo">
-      <p>&copy; 2026 PBTModels</p>
-    </div>
-  </footer>
-
-</body>
-
+    </footer>
+  </body>
 </html>
