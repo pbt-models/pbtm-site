@@ -1,0 +1,10 @@
+- title: Home
+  url: index.html
+- title: Book
+  url: book.html
+- title: CoPlot
+  url: coplot.html
+- title: Shiny App
+  url: app.html
+- title: R Package
+  url: rpackage.html

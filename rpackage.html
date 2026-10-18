@@ -1,85 +1,40 @@
-<!doctype html>
-<html lang="en-US">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>PBTModels - R Package</title>
-    <meta
-      name="description"
-      content="The pbtm R package for population-based threshold models."
-    />
-    <meta
-      name="keywords"
-      content="germination, population, threshold, model, R package"
-    />
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+---
+layout: default
+title: "PBTModels - R Package"
+description: "The pbtm R package for population-based threshold models."
+keywords: "germination, population, threshold, model, R package"
+---
 
-  <body>
-    <!-- Header -->
-    <header class="site-header">
-      <div class="header-inner">
-        <a href="index.html" class="logo">
-          <img src="images/pbt-models-logo.png" alt="PBT models logo" />
-        </a>
-        <nav>
-          <a href="index.html">Home</a>
-          <a href="book.html">Book</a>
-          <a href="coplot.html">CoPlot</a>
-          <a href="app.html">Shiny App</a>
-          <a href="rpackage.html" class="active">R Package</a>
-        </nav>
-      </div>
-    </header>
+<!-- Title -->
+<section class="page-hero">
+  <h1>The PBTM R Package</h1>
+  <p>Functions for fitting population-based threshold models in R.</p>
+</section>
 
-    <!-- Title -->
-    <section class="page-hero">
-      <h1>The PBTM R Package</h1>
-      <p>Functions for fitting population-based threshold models in R.</p>
-    </section>
+<!-- Article -->
+<article class="article">
+  <h2>About the R package</h2>
 
-    <!-- Article -->
-    <article class="article">
-      <h2>About the R package</h2>
+  <p>
+    The <code>pbtm</code> R package fits population-based threshold (PBT) models
+    to seed germination time courses. Each seed has a threshold for a factor
+    such as temperature, water potential, a hormone, or aging, and thresholds
+    vary normally across the seed population. Fitting the models estimates the
+    threshold distribution and the time constant of the response, from which
+    germination under other conditions can be predicted.
+  </p>
 
-      <p>
-        The <code>pbtm</code> R package fits population-based threshold (PBT)
-        models to seed germination time courses. Each seed has a threshold for a
-        factor such as temperature, water potential, a hormone, or aging, and
-        thresholds vary normally across the seed population. Fitting the models
-        estimates the threshold distribution and the time constant of the
-        response, from which germination under other conditions can be
-        predicted.
-      </p>
+  <p>
+    The <a href="app.html">R Shiny app</a> provides an interactive interface for
+    fitting PBT models and implements the models available in the package.
+  </p>
 
-      <p>
-        The <a href="app.html">R Shiny app</a> provides an interactive interface
-        for fitting PBT models and implements the models available in the
-        package.
-      </p>
-
-      <div class="button-row">
-        <a
-          href="https://github.com/pbt-models/pbtm"
-          target="_blank"
-          class="button"
-          >View on GitHub</a
-        >
-        <a
-          href="https://pbt-models.github.io/pbtm/"
-          target="_blank"
-          class="button"
-          >View the documentation</a
-        >
-      </div>
-    </article>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <p>&copy; 2026 PBTModels</p>
-      </div>
-    </footer>
-  </body>
-</html>
+  <div class="button-row">
+    <a href="https://github.com/pbt-models/pbtm" target="_blank" class="button"
+      >View on GitHub</a
+    >
+    <a href="https://pbt-models.github.io/pbtm/" target="_blank" class="button"
+      >View the documentation</a
+    >
+  </div>
+</article>

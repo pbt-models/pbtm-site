@@ -1,0 +1,18 @@
+<!-- Header -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="images/pbt-models-logo.png" alt="PBT models logo" />
+    </a>
+    <nav>
+      {%- assign current = page.url | remove_first: "/" | default: "index.html" -%}
+      {%- for item in site.data.nav -%}
+        {%- if item.url == current %}
+      <a href="{{ item.url }}" class="active">{{ item.title }}</a>
+        {%- else %}
+      <a href="{{ item.url }}">{{ item.title }}</a>
+        {%- endif -%}
+      {%- endfor %}
+    </nav>
+  </div>
+</header>

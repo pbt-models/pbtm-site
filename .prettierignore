@@ -1,0 +1,4 @@
+# Liquid templates: HTML formatters mangle {% %} tags
+_includes/
+_layouts/
+_site/
